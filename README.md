@@ -2,8 +2,10 @@
 ### 가이드
 #### 앱 실행
 1. 터미널(CMD, PowerShell, iTermn) 실행
-2. csv-generator.jar 파일 경로로 이동
-3. `java -jar csv-generator.jar` 명령어 입력
+2. 프로젝트 루트로 이동
+3. `.\gradle clean build` 명령어로 build 수행
+4. csv-generator.jar 파일 경로로 이동
+5. `java -jar csv-generator.jar` 명령어로 앱 실행
 #### 앱 사용법
 1. 저장할 파일 명 입력 (영문, 확장자명x)
 2. 생성 방법 선택
