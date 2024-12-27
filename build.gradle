@@ -1,0 +1,48 @@
+plugins {
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // implementation 'com.navercorp.fixturemonkey:fixture-monkey:1.1.6'
+    implementation 'com.github.javafaker:javafaker:1.0.2'
+    implementation 'org.slf4j:slf4j-api:1.7.32'
+    implementation 'org.slf4j:slf4j-nop:1.7.32'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+application {
+    mainClass = 'csv.generator.App'
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['app/src/main/java']
+        }
+    }
+}
+
+tasks.named('jar') {
+    manifest {
+        attributes(
+            'Main-Class': 'csv.generator.App'
+        )
+    }
+    from {
+        configurations.compileClasspath.collect {it.isDirectory() ? it : zipTree(it)}
+    }
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
